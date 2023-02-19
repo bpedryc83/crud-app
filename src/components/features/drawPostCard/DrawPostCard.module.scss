@@ -1,0 +1,23 @@
+.cardWidth {
+  width: 32%;
+}
+
+.marginButton {
+  bottom: 15px;
+}
+
+.marginCard {
+  margin-bottom: 35px;
+}
+
+@media (max-width: 800px) {
+  .cardWidth {
+    width: 49%;
+  }
+}
+
+@media (max-width: 520px) {
+  .cardWidth {
+    width: 100%;
+  }
+}
