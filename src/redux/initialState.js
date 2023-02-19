@@ -28,7 +28,7 @@ const initialState = {
       id: '4',
       title: 'Natural landscapes',
       shortDescription: 'The varied natural landscapes of Abu Dhabi...',
-      content: 'Beyond the emirate’s urban skyline lies diverse natural beauty, from mangroves to mountains, wadis, deserts, and nature reserves.',
+      content: 'Beyond the emirates urban skyline lies diverse natural beauty, from mangroves to mountains, wadis, deserts, and nature reserves.',
       publishedDate: '04-03-2022',
       author: 'Christian Snowden'
     }

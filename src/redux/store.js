@@ -3,6 +3,7 @@ import initialState from './initialState';
 import postsReducer from './postsRedux';
 
 export const getAllPosts = (state) => state.posts;
+export const getPostbyId = ({ posts }, id) => posts.find(post => post.id === id);
 
 const subreducers = {
   posts: postsReducer,

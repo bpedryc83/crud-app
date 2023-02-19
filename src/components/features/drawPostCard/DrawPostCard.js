@@ -12,7 +12,7 @@ const DrawPostCard = props => {
             <p className="fw-bold fs-6 mb-2">Published: <span className="fw-normal">{props.publishedDate}</span></p>
             <p className={`fs-6 fw-normal ${styles.marginCard}`}>{props.shortDescription}</p>
             <div className={`d-flex align-content-end position-absolute ${styles.marginButton}`}>
-              <Link key={props.id} to={"/post:" + props.id}>
+              <Link key={props.id} to={"/post/" + props.id}>
                 <button className="btn btn-primary" type="submit">Read more</button>
               </Link>
             </div>

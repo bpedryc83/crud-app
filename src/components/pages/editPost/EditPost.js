@@ -1,3 +1,3 @@
-const EditPost = () => <div>Edit Post</div>
+const EditPost = () => <h2>Edit Post</h2>
 
 export default EditPost;
