@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deletePost } from "../../../redux/postsRedux";
+import dateToStr from "../../../utils/dateToStr";
 
 const Post = () => {
 
@@ -63,8 +64,8 @@ const Post = () => {
         </div>
         <div className="px-0 mb-4">
           <p className="fw-bold fs-6 mb-0">Author: <span className="fw-normal">{postData.author}</span></p>
-          <p className="fw-bold fs-6 mb-2">Published: <span className="fw-normal">{postData.publishedDate}</span></p>
-          <p className="fs-6 fw-normal">{postData.content}</p>
+          <p className="fw-bold fs-6 mb-2">Published: <span className="fw-normal">{dateToStr(postData.publishedDate)}</span></p>
+          <p className="fs-6 fw-normal" dangerouslySetInnerHTML={{ __html: postData.content }} />
         </div>
       </Container>
     )

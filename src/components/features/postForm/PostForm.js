@@ -5,6 +5,12 @@ import shortid from 'shortid';
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
 const PostForm = props => {
 
   const [title, setTitle] = useState((props.data) ? (props.data.title): '');
@@ -31,11 +37,13 @@ const PostForm = props => {
         <label className="col-form-label">Author</label>
         <input type="text" id="inputAuthor" value={author} className="form-control w-50 mb-1" placeholder="Enter author" required onChange={e => setAuthor(e.target.value)}></input>
         <label className="col-form-label">Published</label>
-        <input type="text" id="inputPublished" value={publishedDate} className="form-control w-50 mb-1" placeholder="Enter date dd-mm-yyyy" required onChange={e => setPublishedDate(e.target.value)}></input>
+        <DatePicker dateFormat="yyyy/MM/dd" selected={publishedDate} onChange={(date) => setPublishedDate(date)} />
+        {/* <input type="text" id="inputPublished" value={publishedDate} className="form-control w-50 mb-1" placeholder="Enter date dd-mm-yyyy" required onChange={e => setPublishedDate(e.target.value)}></input> */}
         <label className="col-form-label">Short description</label>
         <textarea rows="3" id="inputShortDesc" value={shortDescription} className="form-control w-100 mb-1" placeholder="Leave a comment here" required onChange={e => setShortDescription(e.target.value)}></textarea>
         <label className="col-form-label">Main content</label>
-        <textarea rows="8" id="content" value={content} className="form-control w-100 mb-3" placeholder="Leave a comment here" required onChange={e => setContent(e.target.value)}></textarea>
+        {/* <textarea rows="8" id="content" value={content} className="form-control w-100 mb-3" placeholder="Leave a comment here" required onChange={e => setContent(e.target.value)}></textarea> */}
+        <ReactQuill theme="snow" id="content" value={content} onChange={setContent} /><br />
         <Button type="submit">{props.buttonText}</Button>
       </form>
     </div>
