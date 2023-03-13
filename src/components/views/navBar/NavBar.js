@@ -11,6 +11,7 @@ const NavBar = () =>
     </Nav> 
     <Nav className="justify-content-end col-9 pe-2 fs-6">
       <Nav.Link as={Link} to="/">Home</Nav.Link>
+      <Nav.Link as={Link} to="/categories">Categories</Nav.Link>
       <Nav.Link as={Link} to="/about">About</Nav.Link>
     </Nav>
   </Container>

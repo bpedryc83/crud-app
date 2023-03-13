@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import shortid from 'shortid';
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
+import { useSelector } from "react-redux";
+import { getAllCategories } from "../../../redux/store";
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -19,12 +21,16 @@ const PostForm = props => {
   const [publishedDate, setPublishedDate] = useState((props.data) ? (props.data.publishedDate): '');
   const [shortDescription, setShortDescription] = useState((props.data) ? (props.data.shortDescription): '');
   const [content, setContent] = useState((props.data) ? (props.data.content): '');
+  const [category, setCategory] = useState((props.data) ? (props.data.category): '');
 
   const [publishedDateError, setPublishedDateError] = useState(false);
   const [contentError, setContentError] = useState(false);
+  const [categoryError, setCategoryError] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const categories = useSelector(getAllCategories);
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
   
@@ -32,10 +38,12 @@ const PostForm = props => {
   const handleSubmit = () => {
     setPublishedDateError(!publishedDate);
     setContentError(!content);
+    setCategoryError(!category);
+    console.log(category);
 
     if (content && publishedDate) {
       const id = (props.data) ? (props.data.id): shortid();
-      dispatch(props.action( { id, title, author, publishedDate, shortDescription, content} ));
+      dispatch(props.action( { id, title, author, publishedDate, shortDescription, content, category} ));
       navigate("/");
     }
   }
@@ -55,10 +63,17 @@ const PostForm = props => {
         <DatePicker dateFormat="yyyy/MM/dd" selected={publishedDate} onChange={(date) => setPublishedDate(date)} />
         {publishedDateError && <small className="d-block form-text text-danger mt-2">Date is required</small>}
 
+        <label className="col-form-label">Category</label><br />
+        <select id="categories" className="form-control w-50 mb-1" onChange={e => setCategory(e.target.options.selectedIndex.toString())}>
+          <option selected disabled value="">Select category...</option>
+          {categories.map(category => <option key={category.id}>{category.name}</option>)}
+        </select>
+        {categoryError && <small className="d-block form-text text-danger mt-2">Category is required</small>}
+
         <label className="col-form-label">Short description</label>
         <textarea rows="3" {...register("inputShortDescription", {required: true, minLength: 20})} value={shortDescription} className="form-control w-100 mb-1" placeholder="Leave a comment here" onChange={e => setShortDescription(e.target.value)}></textarea>
         {errors.inputShortDescription && <small className="d-block form-text text-danger mt-2">This field is required (minimum 20 letters)</small>}
-        
+                
         <label className="col-form-label">Main content</label>
         <ReactQuill className="w-100 mb-1" theme="snow" id="content" value={content} onChange={setContent} />
         {contentError && <small className="d-block form-text text-danger mt-2">This field is required</small>}

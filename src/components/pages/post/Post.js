@@ -2,6 +2,7 @@ import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getPostbyId } from "../../../redux/store";
+import { getCategoryById } from "../../../redux/store";
 import { Link } from "react-router-dom";
 import styles from './Post.module.scss';
 import { Modal, Button } from "react-bootstrap";
@@ -17,6 +18,7 @@ const Post = () => {
 
   const postParams = useParams();
   const postData = useSelector(state => getPostbyId(state, postParams.id));
+  const postCategory = useSelector(state => getCategoryById(state, postData.category));
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true); 
@@ -64,7 +66,8 @@ const Post = () => {
         </div>
         <div className="px-0 mb-4">
           <p className="fw-bold fs-6 mb-0">Author: <span className="fw-normal">{postData.author}</span></p>
-          <p className="fw-bold fs-6 mb-2">Published: <span className="fw-normal">{dateToStr(postData.publishedDate)}</span></p>
+          <p className="fw-bold fs-6 mb-0">Published: <span className="fw-normal">{dateToStr(postData.publishedDate)}</span></p>
+          <p className="fw-bold fs-6 mb-2">Category: <span className="fw-normal">{postCategory.name}</span></p>
           <p className="fs-6 fw-normal" dangerouslySetInnerHTML={{ __html: postData.content }} />
         </div>
       </Container>

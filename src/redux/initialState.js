@@ -6,7 +6,8 @@ const initialState = {
       shortDescription: 'How liquid biopsies have made it easier to treat cancer...',
       content: 'A traditional tissue biopsy comes with risks and challenges—the target area can be hard to reach and bleeding and pain can last up to a month afterward. Patients can expect steep medical bills and up to a four-week wait to get results. That’s a problem when a patient is dealing with an aggressive cancer.',
       publishedDate: new Date('02-02-2022'),
-      author: 'John Doe'
+      author: 'John Doe',
+      category: '2'
     },
     {
       id: '2',
@@ -14,7 +15,8 @@ const initialState = {
       shortDescription: 'The scientific case against gas stoves...',
       content: 'Health experts have known for decades that indoor air pollution hurts childrens lungs. Now, there are good alternatives to gas stoves.',
       publishedDate: new Date('02-03-2022'),
-      author: 'Alex Malone'
+      author: 'Alex Malone',
+      category: '3'
     },
     {
       id: '3',
@@ -22,7 +24,8 @@ const initialState = {
       shortDescription: 'Ramses II ruled for 70 years and had 100 children...',
       content: 'The pharaoh left behind a monumental list of accomplishments. But his reluctance to pass the baton ultimately led to his dynasty’s collapse.',
       publishedDate: new Date('02-10-2022'),
-      author: 'Vincent Max'
+      author: 'Vincent Max',
+      category: '3'
     },
     {
       id: '4',
@@ -30,7 +33,22 @@ const initialState = {
       shortDescription: 'The varied natural landscapes of Abu Dhabi...',
       content: 'Beyond the emirates urban skyline lies diverse natural beauty, from mangroves to mountains, wadis, deserts, and nature reserves.',
       publishedDate: new Date('03-04-2022'),
-      author: 'Christian Snowden'
+      author: 'Christian Snowden',
+      category: '2'
+    }
+  ],
+  categories: [
+    {
+      id: '1',
+      name: 'Sport'
+    },
+    {
+      id: '2',
+      name: 'News'
+    },
+    {
+      id: '3',
+      name: 'Movies'
     }
   ],
 }
